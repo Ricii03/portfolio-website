@@ -23,32 +23,28 @@ A modern, interactive portfolio website built with React, TypeScript, and Tailwi
 - **Lucide React** - Beautiful, customizable icons
 - **Vite** - Fast build tool and dev server
 
-### Backend (Ready for MERN Stack)
-- **Node.js** - JavaScript runtime
-- **Express.js** - Web application framework
-- **MongoDB** - NoSQL database
-- **Mongoose** - MongoDB object modeling
-
 ## 📁 Project Structure
 
 ```
 portfolio/
-├── src/
-│   ├── components/
-│   │   ├── Navbar.tsx          # Navigation component
-│   │   ├── Hero.tsx            # Hero section with CTA
-│   │   ├── About.tsx           # About me section
-│   │   ├── Skills.tsx          # Skills and technologies
-│   │   ├── Projects.tsx        # Projects showcase with carousel
-│   │   ├── Contact.tsx         # Contact form and information
-│   │   └── Footer.tsx          # Footer with links
-│   ├── App.tsx                 # Main application component
-│   ├── main.tsx                # Application entry point
-│   └── index.css               # Global styles and Tailwind
-├── public/                     # Static assets
-├── tailwind.config.js          # Tailwind CSS configuration
-├── postcss.config.js           # PostCSS configuration
-├── package.json                # Dependencies and scripts
+├── frontend/                   # React frontend application
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Navbar.tsx      # Navigation component
+│   │   │   ├── Hero.tsx        # Hero section with CTA
+│   │   │   ├── About.tsx       # About me section
+│   │   │   ├── Skills.tsx      # Skills and technologies
+│   │   │   ├── Projects.tsx    # Projects showcase with carousel
+│   │   │   ├── Contact.tsx     # Contact form and information
+│   │   │   └── Footer.tsx      # Footer with links
+│   │   ├── App.tsx             # Main application component
+│   │   ├── main.tsx            # Application entry point
+│   │   └── index.css           # Global styles and Tailwind
+│   ├── public/                 # Static assets
+│   ├── tailwind.config.js      # Tailwind CSS configuration
+│   ├── postcss.config.js       # PostCSS configuration
+│   └── package.json            # Frontend dependencies
+├── package.json                # Root package.json for scripts
 └── README.md                   # Project documentation
 ```
 
@@ -66,9 +62,9 @@ portfolio/
    cd portfolio
    ```
 
-2. **Install dependencies**
+2. **Install all dependencies**
    ```bash
-   npm install
+   npm run install:all
    ```
 
 3. **Start development server**
@@ -85,7 +81,7 @@ portfolio/
 npm run build
 ```
 
-The built files will be in the `dist/` directory, ready for deployment.
+The built files will be in the `frontend/dist/` directory, ready for deployment.
 
 ## 🎨 Customization
 
