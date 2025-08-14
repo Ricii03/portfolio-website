@@ -39,7 +39,7 @@ const About = () => {
                 <div className="relative aspect-[3/4] bg-gradient-to-br from-primary-600 via-blue-600 to-purple-700 rounded-3xl p-1 shadow-2xl">
                   <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-3xl flex items-center justify-center overflow-hidden">
                     <img 
-                      src="https://drive.google.com/uc?export=view&id=YOUR_FILE_ID_HERE" 
+                      src="/images/profile.jpg" 
                       alt="Richy Julianto" 
                       className="w-full h-full object-cover"
                       loading="lazy"

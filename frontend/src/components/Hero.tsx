@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Linkedin, Instagram, Github, Mail, ChevronDown } from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
 
 const Hero = () => {
   const [scrambledText, setScrambledText] = useState('')
@@ -51,6 +52,14 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Animated Gradient Overlay - Top Half Only */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent dark:bg-gradient-to-br dark:from-purple-900/40 dark:via-blue-900/30 dark:to-gray-900/20 dark:animate-gradient-x opacity-60"></div>
+      
+      {/* Theme Toggle - Bottom Right Fixed */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
+      
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl"></div>
@@ -63,7 +72,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="backdrop-blur-xl bg-white/20 dark:bg-dark-800/20 rounded-3xl border border-white/30 dark:border-gray-700/30 shadow-2xl p-8 md:p-12 lg:p-16"
+          className="backdrop-blur-xl bg-white/90 dark:bg-gray-800/20 rounded-3xl border border-gray-200/50 dark:border-gray-700/30 shadow-xl dark:shadow-2xl p-8 md:p-12 lg:p-16"
         >
           <div className="text-center">
             <motion.div
@@ -126,7 +135,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 bg-white/20 dark:bg-dark-800/20 backdrop-blur-sm rounded-full border border-white/30 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+                className="p-3 bg-white/20 dark:bg-gray-800/20 backdrop-blur-sm rounded-full border border-white/30 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
               >
                 <Linkedin size={24} />
               </motion.a>
@@ -137,7 +146,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 bg-white/20 dark:bg-dark-800/20 backdrop-blur-sm rounded-full border border-white/30 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+                className="p-3 bg-white/20 dark:bg-gray-800/20 backdrop-blur-sm rounded-full border border-white/30 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
               >
                 <Instagram size={24} />
               </motion.a>
@@ -148,7 +157,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 bg-white/20 dark:bg-dark-800/20 backdrop-blur-sm rounded-full border border-white/30 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+                className="p-3 bg-white/20 dark:bg-gray-800/20 backdrop-blur-sm rounded-full border border-white/30 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
               >
                 <Github size={24} />
               </motion.a>
@@ -157,7 +166,7 @@ const Hero = () => {
                 href="mailto:richy@example.com"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 bg-white/20 dark:bg-dark-800/20 backdrop-blur-sm rounded-full border border-white/30 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+                className="p-3 bg-white/20 dark:bg-gray-800/20 backdrop-blur-sm rounded-full border border-white/30 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
               >
                 <Mail size={24} />
               </motion.a>
