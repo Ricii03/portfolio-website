@@ -4,7 +4,7 @@
   "description": "Modern portfolio website built with React, TypeScript, and Tailwind CSS",
   "scripts": {
     "dev": "cd frontend && npm run dev",
-    "build": "cd frontend && npm run build",
+    "build": "cd frontend && npm install && npm run build",
     "install:all": "npm install && cd frontend && npm install",
     "preview": "cd frontend && npm run preview"
   },
