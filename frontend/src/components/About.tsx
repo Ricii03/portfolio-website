@@ -1,89 +1,94 @@
 import { motion } from 'framer-motion'
+import React from 'react'
 
 const About = () => {
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center py-20">
-      <div className="container-custom">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              About <span className="text-gradient">Me</span>
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              A passionate web developer and data analyst with expertise in creating innovative digital solutions 
-              and transforming complex data into meaningful insights.
-            </p>
-          </motion.div>
+    <section
+      id="about"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden py-24"
+    >
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column - Profile Picture */}
+      {/* Glass Effect Container */}
+      <div className="container-custom relative z-10 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="backdrop-blur-xl bg-white/90 dark:bg-gray-800/20 rounded-3xl border border-gray-200/50 dark:border-gray-700/30 shadow-xl dark:shadow-2xl p-8 md:p-12 lg:p-16"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Image Section - Left */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="relative"
+              className="flex justify-center lg:justify-start"
             >
-              <div className="relative w-full max-w-md mx-auto">
-                {/* Gradient Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-blue-500 to-purple-600 rounded-3xl blur-2xl opacity-30 scale-110"></div>
-                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400 via-blue-500 to-indigo-600 rounded-3xl blur-xl opacity-20 scale-105"></div>
-                
-                {/* Picture Container */}
-                <div className="relative aspect-[3/4] bg-gradient-to-br from-primary-600 via-blue-600 to-purple-700 rounded-3xl p-1 shadow-2xl">
-                  <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-3xl flex items-center justify-center overflow-hidden">
-                    <img 
-                      src="/images/profile.jpg" 
-                      alt="Richy Julianto" 
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      style={{ imageRendering: 'crisp-edges' }}
-                    />
-                  </div>
+              <div className="relative w-full max-w-md">
+                <div className="aspect-square w-full overflow-hidden rounded-2xl shadow-2xl bg-gray-200 dark:bg-gray-700">
+                  <img
+                    src="/images/profile.jpg"
+                    alt="Richy Julianto"
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement
+                      target.style.display = 'none'
+                      const parent = target.parentElement
+                      if (parent) {
+                        parent.innerHTML = '<div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-600"><span>Image not found</span></div>'
+                      }
+                    }}
+                    onLoad={(e) => {
+                      const target = e.target as HTMLImageElement
+                      target.style.opacity = '1'
+                    }}
+                    style={{ opacity: 0, transition: 'opacity 0.3s' }}
+                  />
                 </div>
               </div>
             </motion.div>
 
-            {/* Right Column - Details */}
+            {/* Content Section - Right */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              className="space-y-8"
+              className="space-y-6"
             >
-              <div>
-                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Who I Am</h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-                  I'm a dedicated professional with a passion for technology and innovation. My journey in web development 
-                  and data analysis has equipped me with the skills to create impactful digital solutions that drive business growth.
+              <div className="space-y-4">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white">
+                  About <span className="text-gradient">Me</span>
+                </h2>
+                <div className="h-px w-20 bg-gray-300 dark:bg-gray-700"></div>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Informatics Engineering student at Universitas Negeri Semarang specializing in Fullstack Web Development. 
+                  Proficient in building responsive and scalable user interfaces using React.js and robust backend systems with Node.js.
+                </p>
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Passionate about creating seamless web applications and eager to leverage technical skills in a challenging development role.
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">What I Do</h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-                  I specialize in building modern, scalable web applications using cutting-edge technologies. 
-                  Additionally, I excel at analyzing complex datasets to extract valuable insights that inform strategic decisions.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">My Approach</h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-                  I believe in writing clean, maintainable code and creating user experiences that are both beautiful and functional. 
-                  Every project I work on is an opportunity to learn, grow, and deliver exceptional results.
-                </p>
+              {/* Name */}
+              <div className="pt-4">
+                <div className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+                  <span className="bg-gradient-to-r from-primary-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    Richy Julianto
+                  </span>
+                </div>
               </div>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

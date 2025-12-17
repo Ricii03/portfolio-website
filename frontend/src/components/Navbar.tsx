@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -13,7 +13,7 @@ const Navbar = () => {
       if (window.scrollY < 100) {
         setActiveSection('home')
       } else {
-        const sections = ['hero', 'about']
+        const sections = ['hero', 'about', 'experience', 'projects', 'certificates']
         const scrollPosition = window.scrollY + 100
         
         for (const section of sections) {
@@ -48,7 +48,7 @@ const Navbar = () => {
         }`}>
           {/* Navigation Links */}
           <div className="flex items-center space-x-12">
-            {['Home', 'About'].map((item, index) => {
+            {['Home', 'About', 'Experience', 'Projects', 'Certificates'].map((item, index) => {
               const href = item === 'Home' ? '#' : `#${item.toLowerCase()}`
               return (
               <motion.a

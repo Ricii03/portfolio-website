@@ -43,6 +43,10 @@ module.exports = {
         'slide-down': 'slideDown 0.5s ease-out',
         'scale-in': 'scaleIn 0.3s ease-out',
         'gradient-x': 'gradient-x 8s ease infinite',
+        'gradient-flow': 'gradient-flow 15s ease infinite',
+        'gradient-rotate': 'gradient-rotate 20s ease infinite',
+        'bubble-float': 'bubble-float 20s ease-in-out infinite',
+        'bubble-drift': 'bubble-drift 25s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -69,6 +73,44 @@ module.exports = {
           '50%': {
             'background-size': '200% 200%',
             'background-position': 'right center'
+          },
+        },
+        'gradient-flow': {
+          '0%, 100%': {
+            'background-position': '0% 50%'
+          },
+          '50%': {
+            'background-position': '100% 50%'
+          },
+        },
+        'gradient-rotate': {
+          '0%': {
+            'background-position': '0% 50%'
+          },
+          '50%': {
+            'background-position': '100% 50%'
+          },
+          '100%': {
+            'background-position': '0% 50%'
+          },
+        },
+        'bubble-float': {
+          '0%, 100%': {
+            transform: 'translate(0, 0) scale(1)',
+          },
+          '33%': {
+            transform: 'translate(30px, -30px) scale(1.1)',
+          },
+          '66%': {
+            transform: 'translate(-20px, 20px) scale(0.9)',
+          },
+        },
+        'bubble-drift': {
+          '0%, 100%': {
+            transform: 'translate(0, 0)',
+          },
+          '50%': {
+            transform: 'translate(50px, -50px)',
           },
         },
       },

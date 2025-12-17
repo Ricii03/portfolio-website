@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Linkedin, Instagram, Github, Mail, ChevronDown } from 'lucide-react'
+import { Linkedin, Instagram, Github, Mail, ChevronDown, Download } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 
 const Hero = () => {
@@ -52,18 +52,9 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated Gradient Overlay - Top Half Only */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent dark:bg-gradient-to-br dark:from-purple-900/40 dark:via-blue-900/30 dark:to-gray-900/20 dark:animate-gradient-x opacity-60"></div>
-      
       {/* Theme Toggle - Bottom Right Fixed */}
       <div className="fixed bottom-6 right-6 z-50">
         <ThemeToggle />
-      </div>
-      
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
       </div>
 
       {/* Glass Effect Container */}
@@ -90,12 +81,11 @@ const Hero = () => {
               </h1>
               
               <h2 className="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-6">
-                Web Developer & Data Analyst
+                Fullstack Web Developer
               </h2>
               
               <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
-                Passionate about creating innovative web solutions and transforming data into actionable insights. 
-                Let's build something amazing together!
+              Passionate about creating seamless web applications and eager to leverage technical skills in a challenging development role.
               </p>
             </motion.div>
 
@@ -106,20 +96,26 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
             >
-              <motion.button
+              <motion.a
+                href="#projects"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-primary"
+                className="btn-primary inline-flex items-center justify-center"
               >
                 View My Work
-              </motion.button>
-              <motion.button
+              </motion.a>
+              <motion.a
+                href="/cv/Richy_Julianto_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Richy_Julianto_CV.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-secondary"
+                className="btn-secondary inline-flex items-center justify-center gap-2"
               >
+                <Download size={20} />
                 Download CV
-              </motion.button>
+              </motion.a>
             </motion.div>
 
             {/* Social Links */}
