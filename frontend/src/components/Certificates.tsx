@@ -178,6 +178,28 @@ const Certificates = () => {
               </p>
             </motion.div>
           )}
+
+          {/* View All Certificates Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <motion.a
+              href="https://drive.google.com/drive/folders/1eI-mOoTUUa3N_q6E2k5jRLv90iRfSYNj?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl"
+            >
+              <Award size={20} />
+              View All Certificates
+              <ExternalLink size={18} />
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Linkedin, Instagram, Github, Mail, ChevronDown, Download } from 'lucide-react'
+import { Linkedin, Instagram, Github, Mail, ChevronDown, Download, Copy, Check } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
+import Toast from './Toast'
 
 const Hero = () => {
   const [scrambledText, setScrambledText] = useState('')
   const [isScrambling, setIsScrambling] = useState(true)
+  const [showToast, setShowToast] = useState(false)
+  const [emailCopied, setEmailCopied] = useState(false)
+  
+  const email = 'richyjuli03@gmail.com'
   
   const finalText = 'Richy Julianto'
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()'
@@ -50,8 +55,46 @@ const Hero = () => {
     return () => clearTimeout(timer)
   }, [])
 
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email)
+      setEmailCopied(true)
+      setShowToast(true)
+      setTimeout(() => {
+        setEmailCopied(false)
+      }, 2000)
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea')
+      textArea.value = email
+      textArea.style.position = 'fixed'
+      textArea.style.left = '-999999px'
+      document.body.appendChild(textArea)
+      textArea.focus()
+      textArea.select()
+      try {
+        document.execCommand('copy')
+        setEmailCopied(true)
+        setShowToast(true)
+        setTimeout(() => {
+          setEmailCopied(false)
+        }, 2000)
+      } catch (err) {
+        console.error('Failed to copy email:', err)
+      }
+      document.body.removeChild(textArea)
+    }
+  }
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Toast Notification */}
+      <Toast
+        message="Email copied to clipboard!"
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
+
       {/* Theme Toggle - Bottom Right Fixed */}
       <div className="fixed bottom-6 right-6 z-50">
         <ThemeToggle />
@@ -158,14 +201,20 @@ const Hero = () => {
                 <Github size={24} />
               </motion.a>
               
-              <motion.a
-                href="mailto:richy@example.com"
+              <motion.button
+                onClick={handleCopyEmail}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 bg-white/20 dark:bg-gray-800/20 backdrop-blur-sm rounded-full border border-white/30 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+                className="p-3 bg-white/20 dark:bg-gray-800/20 backdrop-blur-sm rounded-full border border-white/30 dark:border-gray-700/30 shadow-lg hover:shadow-xl transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 relative"
+                title="Copy email to clipboard"
+                aria-label="Copy email address"
               >
-                <Mail size={24} />
-              </motion.a>
+                {emailCopied ? (
+                  <Check size={24} className="text-green-500" />
+                ) : (
+                  <Mail size={24} />
+                )}
+              </motion.button>
             </motion.div>
           </div>
         </motion.div>
